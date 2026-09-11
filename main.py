@@ -1,7 +1,7 @@
 import platform
 import subprocess
 from pathlib import Path
-
+import os
 import psutil
 from fastmcp import FastMCP
 
@@ -83,8 +83,10 @@ def get_processes():
 
 
 if __name__ == "__main__":
+ 
+
     mcp.run(
-        transport="http",
-        host="127.0.0.1",
-        port=8898
+        transport="streamable_http",
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 10000))
     )
